@@ -1,9 +1,10 @@
 const { MessageModel } = require('../models/_models.js');
 
+
 class MessageService {
-    async add(obj) {
+    async add(chat, author, text) {
         return new Promise((res, rej) => {
-            MessageModel.create(obj).then(response => {
+            MessageModel.create({ chat, author, text }).then(response => {
                 res(response);
             });
         });
@@ -11,7 +12,8 @@ class MessageService {
 
     async getChatsMessagesById(id) {
         return new Promise((res, rej) => {
-            MessageModel.findAll({ where: {}}).then(messages => {
+            MessageModel.findAll({ where: { chat: id }}).then(messages => {
+                messages.sort((a,b) => b.createdAt - a.createdAt);
                 res(messages);
             })
         })

@@ -7,7 +7,7 @@ const MessageController = require('../controllers/MessageController.js');
  * @swagger
  * /api/messages/add:
  *   post:
- *     summary: Get message in the chat from user
+ *     summary: Send message to the chat from user (author --> user_id)
  *     tags: [Messages]
  *     requestBody:
  *       required: true
@@ -15,7 +15,7 @@ const MessageController = require('../controllers/MessageController.js');
  *         application/json:
  *           schema:
  *             properties:
- *               chat_url:
+ *               chat:
  *                 type: integer
  *               author:
  *                 type: integer
@@ -29,14 +29,14 @@ const MessageController = require('../controllers/MessageController.js');
  */
 
 // отправить сообщение в чат от лица пользователя 
-router.post('/add', MessageController.add); // done
+router.post('/add', MessageController.add); 
 
 
 /**
  * @swagger
  * /api/messages/get:
  *   post:
- *     summary: Get message list in the chat
+ *     summary: Get message list in the chat by chat_id
  *     description: POST
  *     tags: [Messages]
  *     requestBody:
@@ -44,8 +44,9 @@ router.post('/add', MessageController.add); // done
  *       content:
  *         application/json:
  *           schema:
- *             chat:
- *               type: string
+ *             properties:
+ *               chat:
+ *                 type: integer
  *     responses:
  *       '200':
  *         description: Seccess
@@ -54,6 +55,6 @@ router.post('/add', MessageController.add); // done
  */
 
 // получить список сообщений в конкретном чате ?post?
-router.post('/get', MessageController.getMessages); // done 
+router.post('/get', MessageController.getMessages); 
 
 module.exports = router;

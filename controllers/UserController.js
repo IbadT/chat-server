@@ -1,4 +1,4 @@
-// import sentry
+const Sentry = require('@sentry/node');
 const UserService = require('../services/UserService.js');
 
 class UserController {
@@ -7,28 +7,23 @@ class UserController {
         // { username: 'user_1 }
         try {
             const { user_name } = req.body;
-            const finderUser = UserService.findUserByUserName(user_name);
-            if(!finderUser) {
-                const { id } = await UserService.createUser(user_name);
-                res.send(id);
-            } else {
-                res.sendStatus(400);
-            }
+            const { id } = await UserService.createUser(user_name);
+            res.send({ id });
         } catch (error) {
-            // Sentry.captureException(error);
+            Sentry.captureException(error);
             res.json(error);
-        }
+        };
     };
 
     async deleteUser(req, res) {
         try {
-            const { id } = req.userId;
-            const deleteResult = await UserService.deleteUser(id);
+            const { username } = req.body; 
+            const deleteResult = await UserService.deleteUser(username);
             res.send(deleteResult);
         } catch (error) {
-            // Sentry.captureException(error);
+            Sentry.captureException(error);
             res.json(error);
-        }
+        };
     };
 };
 
