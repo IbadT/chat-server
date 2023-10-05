@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const UserController = require('../controllers/UserController.js');
+// const validation = require('../helpers/validation.js');
+
 
 
 /**
@@ -7,7 +9,6 @@ const UserController = require('../controllers/UserController.js');
  * /api/users/add:
  *   post:
  *     summary: Add new user
- *     description: add new user
  *     tags: [Users]
  *     requestBody:
  *       required: true
@@ -27,8 +28,28 @@ const UserController = require('../controllers/UserController.js');
  */
 
 // добавить нового пользователя 
-router.post('/add', UserController.add); // done
+router.post('/add', UserController.add); 
 
-// router.delete('/deleteUser', UserController.deleteUser);
+
+/**
+ * @swagger
+ * /api/users/deleteUser:
+ *   delete:
+ *     summary: DELETE user ( !!! this router doesn't used in this task !!! )
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             properties:
+ *               username:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Seccess
+ */
+
+router.delete('/deleteUser', UserController.deleteUser);
 
 module.exports = router;

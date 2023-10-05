@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-10-02T13:40:50.424Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="0EkcX0JkU2Zti5o2D9vW" version="21.6.8" type="device">
+<mxfile host="Electron" modified="2023-10-03T17:47:36.268Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="_3AgkUGEEinqIyj1aYg0" version="21.6.8" type="device">
   <diagram name="Страница — 1" id="BnK_c8vJJ1IT18N92flA">
     <mxGraphModel dx="1026" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -60,7 +60,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="B9mmsDt_i7JM65gP8-RJ-14" value="User" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" parent="1" vertex="1">
-          <mxGeometry x="320" y="290" width="180" height="90" as="geometry" />
+          <mxGeometry x="300" y="290" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="B9mmsDt_i7JM65gP8-RJ-15" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" parent="B9mmsDt_i7JM65gP8-RJ-14" vertex="1">
           <mxGeometry y="30" width="180" height="30" as="geometry" />

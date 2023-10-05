@@ -7,8 +7,7 @@ const ChatController = require('../controllers/ChatController.js');
  * @swagger
  * /api/chats/get:
  *   post:
- *     summary: GET new chat
- *     description: get new chat
+ *     summary: GET chat by user_id
  *     tags: [Chats]
  *     requestBody:
  *       required: true
@@ -17,7 +16,7 @@ const ChatController = require('../controllers/ChatController.js');
  *           schema:
  *             properties:
  *               users:
- *                 type: array
+ *                 type: integer
  *     responses:
  *       '200':
  *         description: Seccess
@@ -28,26 +27,28 @@ const ChatController = require('../controllers/ChatController.js');
  */
 
 // получить список чатов конкретного пользователя ?post?
-router.post('/get', ChatController.getChatsByUserId) // done
+router.post('/get', ChatController.getChatsByUserId) 
 
 
 /**
  * @swagger
  * /api/chats/add:
  *   post:
- *     summary: Add new chat with users
- *     description: Post
+ *     summary: Add new chat with users (array)
  *     tags: [Chats]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
+ *             type: object
  *             properties:
  *               name:
  *                 type: string
- *               users:
+ *               users_array:
  *                 type: array
+ *                 items:
+ *                   type: integer
  *     responses:
  *       '200':
  *         description: Seccess
@@ -55,9 +56,8 @@ router.post('/get', ChatController.getChatsByUserId) // done
  *         description: Bad Request
  */
 
-
 // создать новый чат между пользователями 
-router.post('/add', ChatController.add); // done
+router.post('/add', ChatController.add); 
 
 
 

@@ -1,5 +1,5 @@
 const ChatService = require('../services/ChatService.js');
-const ChatUsersS = require('../')
+const Sentry = require('@sentry/node');
 
 class ChatController {
 
@@ -10,9 +10,9 @@ class ChatController {
             const chats = await ChatService.getChatsByUserId(users);
             res.send(chats);
         } catch (error) {
-            // Sentry.captureException(error);
+            Sentry.captureException(error);
             res.json(error);
-        }
+        };
     };
 
     async add(req, res) {
@@ -20,10 +20,10 @@ class ChatController {
         // { name: 'chat1', users_array: [user1, user_id_1, user_id_2] }
         try {
             const { name, users_array } = req.body;
-            const { id } = await ChatService.add(name, users_array);
-            res.send(id);
+            const id = await ChatService.add(name, users_array);
+            res.send({ id });
         } catch (error) {
-            // Sentry.captureException(error);
+            Sentry.captureException(error);
             res.json(error);
         }
     };

@@ -11,9 +11,8 @@ const UserModel = pgDb.define(
             allowNull: false
         },
         username: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false,
-            unique: true
         }
     }
 );

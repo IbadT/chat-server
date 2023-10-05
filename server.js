@@ -1,8 +1,17 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
 app.use(express.json());
 
+const Sentry = require('@sentry/node');
+
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.errorHandler());
+
+Sentry.init({
+  dsn: process.env.DSN,
+})
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -15,16 +24,6 @@ const options = {
             title: 'User API',
             server: ['http://localhost:3000'],
             version: '1.0.0'
-        },
-        components: {
-            securitySchemes: {
-                bearerAuth: {
-                    type: 'http',
-                    name: 'Authorization',
-                    scheme: 'bearer',
-                    bearerFormat: 'JWT'
-                }
-            }
         }
     },
     apis: ["./routes/*.js"]
@@ -36,6 +35,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 const routes = require('./routes/index.js');
 app.use('/api', routes);
 
-app.listen(3000, () => console.log('Server is started...'));
+app.listen(process.env.PORT, () => console.log('Server is started...'));
+
 
 module.exports = app;

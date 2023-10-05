@@ -1,12 +1,21 @@
+require('dotenv').config();
 const Sequelize = require('sequelize');
 
+const { DBNAME, DBUSERNAME, DBPASSWORD, DBHOST } = process.env;
+
 const pgDb = new Sequelize(
-    'chat_server',
-    'postgres',
-    'admin',
+    DBNAME, 
+    DBUSERNAME, 
+    DBPASSWORD, 
     {
-        host: 'localhost',
-        dialect: 'postgres'
+        host: DBHOST,
+        dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false // <<<<<<< YOU NEED THIS
+            }
+        }
     }
 );
 
